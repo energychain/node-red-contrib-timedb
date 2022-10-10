@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-timedb",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Cloud Based Timeseries datastorage (required Rapid-API account)",
   "main": "TimeDB.js",
   "scripts": {

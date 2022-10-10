@@ -1,8 +1,9 @@
 # node-red-contrib-timedb
-Cloud Based Timeseries datastorage compatible with InfluxDB (requires free Rapid-API account) for Node-Red.
+Cloud Based Timeseries datastorage compatible with InfluxDB (requires free RapidAPI account) for Node-Red.
 
 ![npm](https://img.shields.io/npm/dw/node-red-contrib-timedb) [![Build Status](https://travis-ci.com/energychain/node-red-contrib-timedb.svg?branch=master)](https://travis-ci.com/energychain/node-red-contrib-timedb) [![Code Quality](https://www.code-inspector.com/project/12360/score/svg)](https://frontend.code-inspector.com/public/project/12360/node-red-contrib-timedb/dashboard) [![chat](https://img.shields.io/badge/chat-support-brightgreen)](https://tawk.to/chat/5c53189451410568a109843f/default) [![CO2Offset](https://api.corrently.io/v2.0/ghgmanage/statusimg?host=node-red-contrib-timedb&svg=1)](https://co2offset.io/badge.html?host=node-red-contrib-timedb)
 
+Full documentation and free account setup[TimeDB at RapidAPI](https://rapidapi.com/stromdao-stromdao-default/api/timedb).
 
 ## Installation
 

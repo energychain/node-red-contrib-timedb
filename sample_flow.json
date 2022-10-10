@@ -1,0 +1,182 @@
+[
+    {
+        "id": "f955d87f2fad5ec0",
+        "type": "tab",
+        "label": "TimeDB - Sample Flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e6e21cc658d725bd",
+        "type": "inject",
+        "z": "f955d87f2fad5ec0",
+        "name": "Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "dc8ea4688a190718"
+            ]
+        ]
+    },
+    {
+        "id": "dc8ea4688a190718",
+        "type": "function",
+        "z": "f955d87f2fad5ec0",
+        "name": "Build Some Stats",
+        "func": "msg.payload = {\n    freemem: os.freemem(),\n    uptime: os.uptime()\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "os",
+                "module": "os"
+            }
+        ],
+        "x": 350,
+        "y": 160,
+        "wires": [
+            [
+                "497ee88b7354b9f9"
+            ]
+        ]
+    },
+    {
+        "id": "497ee88b7354b9f9",
+        "type": "TimeDBWrite",
+        "z": "f955d87f2fad5ec0",
+        "name": "",
+        "account": "bef2d76ce9df2321",
+        "measurement": "osstats",
+        "x": 560,
+        "y": 160,
+        "wires": [
+            [
+                "cbe4797eb646445c"
+            ]
+        ]
+    },
+    {
+        "id": "cbe4797eb646445c",
+        "type": "debug",
+        "z": "f955d87f2fad5ec0",
+        "name": "Debug Write",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "6933a9ea4d8ef602",
+        "type": "comment",
+        "z": "f955d87f2fad5ec0",
+        "name": "Periodically write some stats",
+        "info": "",
+        "x": 160,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a47e91d4deb90f5a",
+        "type": "comment",
+        "z": "f955d87f2fad5ec0",
+        "name": "Retrieve historic stats",
+        "info": "",
+        "x": 140,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b1bdd4a457a6ac0a",
+        "type": "inject",
+        "z": "f955d87f2fad5ec0",
+        "name": "Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 360,
+        "wires": [
+            [
+                "ecc2e0f02599bd92"
+            ]
+        ]
+    },
+    {
+        "id": "ecc2e0f02599bd92",
+        "type": "TimeDBRead",
+        "z": "f955d87f2fad5ec0",
+        "name": "",
+        "account": "bef2d76ce9df2321",
+        "measurement": "osstats",
+        "retention": "",
+        "x": 320,
+        "y": 360,
+        "wires": [
+            [
+                "080c73a8a225e287"
+            ]
+        ]
+    },
+    {
+        "id": "080c73a8a225e287",
+        "type": "debug",
+        "z": "f955d87f2fad5ec0",
+        "name": "Debug Read",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "bef2d76ce9df2321",
+        "type": "timedb-config",
+        "name": "Test Config"
+    }
+]

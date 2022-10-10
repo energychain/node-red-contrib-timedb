@@ -46,7 +46,9 @@ module.exports = function(RED) {
           let data = {};
           data.measurement = config.measurement;
           let query = "select * from "+config.measurement;
-
+          if((typeof config.retention == 'undefined') || (config.retention == null)) {
+            config.retention = '';
+          }
           if(rapidapiconfig !== null) {
             let options = {
                 method: 'GET',
