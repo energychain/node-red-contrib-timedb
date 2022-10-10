@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    RED.nodes.registerType('timedb-config',{
+        category: 'config',
+        defaults: {
+             name: {
+               value: "",
+               required: false
+             }
+        },
+        credentials: {
+             key: {type: "password"}
+         },
+        label: function() {
+            return this.name ? this.name : "Rapid API Credentials";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="timedb-config">
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-config-input-name">
+  </div>
+    <div class="form-row">
+        <label for="node-config-input-key"><i class="fa fa-lock"></i> Key</label>
+        <input type="password" id="node-config-input-key">
+    </div>
+</script>

@@ -1,0 +1,71 @@
+<script type="text/javascript">
+    RED.nodes.registerType('TimeDBWrite',{
+        category: 'storage',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            account: {required:true, type:"timedb-config"},
+            measurement: {value:"",required:true}
+        },
+        credentials: {
+          key: {type:"password"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file-out.png",
+        label: function() {
+            return this.name||"TimeDB Write";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="TimeDBWrite">
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+      <label for="node-input-account"><i class="fa fa-key"></i>RapidAPI Credentials</label>
+      <input type="text" id="node-input-account">
+  </div>
+  <div class="form-row">
+      <label for="node-input-measurement"><i class="fa fa-tag"></i> Measurement</label>
+      <input type="text" id="node-input-measurement" placeholder="Measurement">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="TimeDB">
+    <p>Stores an object (numeric fields) provided as <code>msg.payload</code> in TimeDB.</p>
+    <p>Full documentation and free account setup:
+      <a href="https://rapidapi.com/stromdao-stromdao-default/api/timedb/" target="_blank">TimeDB at RapidAPI</a>
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('timedb-config',{
+        category: 'config',
+        defaults: {
+             name: {
+               value: "",
+               required: false
+             }
+        },
+        credentials: {
+             key: {type: "password"}
+         },
+        label: function() {
+            return this.name ? this.name : "Rapid API Credentials";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="timedb-config">
+  <div class="form-row">
+    <label for="node-config-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-config-input-name">
+  </div>
+    <div class="form-row">
+        <label for="node-config-input-key"><i class="fa fa-lock"></i> API Key</label>
+        <input type="password" id="node-config-input-key">
+    </div>
+</script>

@@ -1,0 +1,52 @@
+<script type="text/javascript">
+    RED.nodes.registerType('TimeDBRead',{
+        category: 'storage',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            account: {required:true, type:"timedb-config"},
+            measurement: {value:"",required:true},
+            retention: {value:"",required:true}
+        },
+        credentials: {
+          key: {type:"password"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file-in.png",
+        label: function() {
+            return this.name||"TimeDB Read";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="TimeDBRead">
+  <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+      <label for="node-input-account"><i class="fa fa-key"></i>RapidAPI Credentials</label>
+      <input type="text" id="node-input-account">
+  </div>
+  <div class="form-row">
+      <label for="node-input-measurement"><i class="fa fa-tag"></i> Measurement</label>
+      <input type="text" id="node-input-measurement" placeholder="Measurement">
+  </div>
+  <div class="form-row">
+      <label for="node-input-retention"><i class="fa fa-tag"></i> Retention</label>
+      <select id="node-input-retention">
+        <option value="">1 Day</option>
+        <option value="_90d">90 Days</option>
+        <option value="_1y">1 Year</option>
+        <option value="_10y">10 Years</option>
+      </select>
+  </div>
+</script>
+
+<script type="text/html" data-help-name="TimeDBRead">
+    <p>Retrieves a timeseries from TimeDB.</p>
+    <p>Full documentation and free account setup:
+      <a href="https://rapidapi.com/stromdao-stromdao-default/api/timedb/" target="_blank">TimeDB at RapidAPI</a>
+    </p>
+</script>
